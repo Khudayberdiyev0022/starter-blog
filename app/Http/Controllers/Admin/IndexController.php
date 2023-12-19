@@ -21,4 +21,5 @@ class IndexController extends Controller
 
     return response()->json(['slug' => $slug]);
   }
+
 }

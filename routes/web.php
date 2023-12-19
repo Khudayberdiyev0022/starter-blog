@@ -25,6 +25,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(
   Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
   Route::resource('tags', \App\Http\Controllers\Admin\TagController::class);
   Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+  Route::get('settings', \App\Http\Controllers\Admin\SettingController::class)->name('settings.edit');
   Route::get('/comments', fn () => 'comments')->name('comments');
   Route::get('/notifications', fn () => 'notifications')->name('notifications');
   Route::get('/backups', fn () => 'backups')->name('backups');
