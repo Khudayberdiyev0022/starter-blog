@@ -18,12 +18,13 @@ Route::get('/', \App\Http\Controllers\IndexController::class);
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
   Route::get('/', \App\Http\Controllers\Admin\IndexController::class)->name('index');
+//  Route::resource('profile', ProfileController::class)->only('edit', 'update', 'destroy');
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
   Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
-  Route::get('/posts', fn () => 'posts')->name('posts');
-  Route::get('/tags', fn () => 'tags')->name('tags');
+  Route::resource('tags', \App\Http\Controllers\Admin\TagController::class);
+  Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
   Route::get('/comments', fn () => 'comments')->name('comments');
   Route::get('/notifications', fn () => 'notifications')->name('notifications');
   Route::get('/backups', fn () => 'backups')->name('backups');

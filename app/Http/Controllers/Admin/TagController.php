@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
   public function index(): View
   {
-    $categories = Category::query()->latest()->get();
+    $tags = Tag::query()->get();
 
-    return view('admin.categories.index', compact('categories'));
+    return view('admin.tags.index', compact('tags'));
   }
 
   /**
@@ -25,7 +25,7 @@ class CategoryController extends Controller
    */
   public function create(): View
   {
-    return view('admin.categories.create');
+    return view('admin.tags.create');
   }
 
   /**
@@ -33,12 +33,11 @@ class CategoryController extends Controller
    */
   public function store(Request $request): RedirectResponse
   {
-    $data = $request->validate([
+    $data          = $request->validate([
       'title'            => 'required|string',
       'slug'             => 'required|unique:categories,slug',
       'description'      => 'nullable|string',
       'status'           => 'required|integer',
-      'image'            => 'nullable|image|mimes:png,jpg',
       'order'            => 'nullable|integer',
       'meta_title'       => 'nullable|string',
       'meta_description' => 'nullable|string',
@@ -46,60 +45,57 @@ class CategoryController extends Controller
     ]);
 
     $data['order'] = $data['order'] ?? 0;
-//    if ($request->hasFile('image')) {
-//    }
 
-    Category::query()->firstOrCreate($data);
+    Tag::query()->firstOrCreate($data);
 
-    return redirect()->route('admin.categories.index');
+    return redirect()->route('admin.tags.index');
   }
 
   /**
    * Display the specified resource.
    */
-  public function show(Category $category): View
+  public function show(Tag $tag): View
   {
-    return view('admin.categories.show', compact('category'));
+    return view('admin.tags.show', compact('tag'));
   }
 
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Category $category): View
+  public function edit(Tag $tag): View
   {
-    return view('admin.categories.edit', compact('category'));
+    return view('admin.tags.edit', compact('tag'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Category $category): RedirectResponse
+  public function update(Request $request, Tag $tag): RedirectResponse
   {
-    $id = $category->id;
-
+    $id   = $tag->id;
     $data = $request->validate([
       'title'            => 'required|string',
       'slug'             => "required|unique:categories,slug,$id",
       'description'      => 'nullable|string',
       'status'           => 'required|integer',
-      'image'            => 'nullable|image|mimes:png,jpg',
       'order'            => 'nullable|integer',
       'meta_title'       => 'nullable|string',
       'meta_description' => 'nullable|string',
       'meta_keyword'     => 'nullable|string',
     ]);
-    $category->update($data);
 
-    return redirect()->route('admin.categories.index');
+    $tag->update($data);
+
+    return redirect()->route('admin.tags.index');
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Category $category): RedirectResponse
+  public function destroy(Tag $tag): RedirectResponse
   {
-    $category->delete();
+    $tag->delete();
 
-    return redirect()->route('admin.categories.index');
+    return redirect()->route('admin.tags.index');
   }
 }

@@ -207,14 +207,14 @@
           <li class="dropdown {{ activeLink('admin.index') }}">
             <a href="{{ route('admin.index') }}" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
           </li>
-          <li class="dropdown">
-            <a href="{{ route('admin.posts') }}" class="nav-link"><i class="far fa-newspaper"></i><span>Posts</span></a>
+          <li class="dropdown {{ activeLink('admin.posts.*') }}">
+            <a href="{{ route('admin.posts.index') }}" class="nav-link"><i class="far fa-newspaper"></i><span>Posts</span></a>
           </li>
           <li class="dropdown {{ activeLink('admin.categories.*') }}">
             <a href="{{ route('admin.categories.index') }}" class="nav-link"><i class="fas fa-sitemap"></i><span>Categories</span></a>
           </li>
-          <li class="dropdown">
-            <a href="{{ route('admin.tags') }}" class="nav-link"><i class="fas fa-tags"></i><span>Tags</span></a>
+          <li class="dropdown {{ activeLink('admin.tags.*') }}">
+            <a href="{{ route('admin.tags.index') }}" class="nav-link"><i class="fas fa-tags"></i><span>Tags</span></a>
           </li>
           <li class="dropdown">
             <a href="{{ route('admin.comments') }}" class="nav-link"><i class="fas fa-comments"></i><span>Comments</span></a>

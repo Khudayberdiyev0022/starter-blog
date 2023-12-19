@@ -5,10 +5,10 @@
       <div class="card">
         <div class="card-header">
          <div class="d-flex justify-content-between align-items-center w-100">
-           <h4><i class="fas fa-sitemap"></i> Posts</h4>
+           <h4><i class="fas fa-sitemap"></i> Tags</h4>
            <div>
-             <a href="{{ route('admin.posts.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</a>
-             <a href="{{ route('admin.posts.index') }}" class="btn btn-dark"><i class="fas fa-eye-slash"></i> View trash</a>
+             <a href="{{ route('admin.tags.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</a>
+             <a href="{{ route('admin.tags.index') }}" class="btn btn-dark"><i class="fas fa-eye-slash"></i> View trash</a>
            </div>
          </div>
         </div>
@@ -24,14 +24,14 @@
               </tr>
               </thead>
               <tbody>
-              @foreach($posts as $post)
+              @foreach($tags as $tag)
               <tr>
-                <td>{{ $post->id }}</td>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->created_at }}</td>
+                <td>{{ $tag->id }}</td>
+                <td>{{ $tag->title }}</td>
+                <td>{{ $tag->created_at }}</td>
                 <td class="dt-right">
-                  <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
-                  <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary ml-2"><i class="fas fa-pencil-alt"></i></a>
+                  <a href="{{ route('admin.tags.show', $tag->id) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
+                  <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary ml-2"><i class="fas fa-pencil-alt"></i></a>
                 </td>
               </tr>
               @endforeach

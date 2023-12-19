@@ -24,7 +24,7 @@
               </tr>
               </thead>
               <tbody>
-              @forelse($categories as $category)
+              @foreach($categories as $category)
               <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->title }}</td>
@@ -34,11 +34,7 @@
                   <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary ml-2"><i class="fas fa-pencil-alt"></i></a>
                 </td>
               </tr>
-              @empty
-                <tr>
-                  <td colspan="4">No Data</td>
-                </tr>
-              @endforelse
+              @endforeach
               </tbody>
             </table>
           </div>
