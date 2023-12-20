@@ -233,8 +233,8 @@
           <li class="dropdown">
             <a href="{{ route('admin.backups') }}" class="nav-link"><i class="fas fa-undo"></i><span>Backups</span></a>
           </li>
-          <li class="dropdown">
-            <a href="{{ route('admin.roles') }}" class="nav-link"><i class="fas fa-user-shield"></i><span>Roles</span></a>
+          <li class="dropdown {{ activeLink('admin.roles.*') }}">
+            <a href="{{ route('admin.roles.index') }}" class="nav-link"><i class="fas fa-user-shield"></i><span>Roles</span></a>
           </li>
           <li class="dropdown">
             <a href="{{ route('admin.users') }}" class="nav-link"><i class="fas fa-users"></i><span>Users</span></a>
