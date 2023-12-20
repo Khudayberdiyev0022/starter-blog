@@ -35,8 +35,8 @@
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea id="summernote-editor" name="description" cols="500" class="form-control @error('description') is-invalid @enderror">{!! old('description') !!}</textarea>
-                  @error('description')
+                  <textarea id="content" name="content" class="form-control @error('content') is-invalid @enderror">{!! old('content') !!}</textarea>
+                  @error('content')
                   <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
@@ -57,8 +57,16 @@
                   </div>
                   <div class="col-5">
                     <div class="form-group">
-                      <label for="image">Image</label>
-                      <input type="file" name="image" id="image" class="form-control">
+                      <label for="image">Image (Загрузите локально или же вставьте ссылку)</label>
+                      <div class="input-group">
+                         <span class="input-group-btn">
+                           <button id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary h-100">
+                             <i class="fas fa-image mr-1"></i> Выберите фото
+                           </button>
+                         </span>
+                        <input id="thumbnail" class="form-control" type="text" name="filepath">
+                      </div>
+                      <img id="holder" style="margin-top:15px;max-height:100px;">
                     </div>
                   </div>
                   <div class="col-2">

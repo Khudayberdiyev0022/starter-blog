@@ -9,5 +9,5 @@ class Post extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['title', 'slug', 'description', 'image', 'meta_title', 'meta_description', 'meta_keyword', 'order', 'status'];
+  protected $fillable = ['title', 'slug', 'content', 'image', 'meta_title', 'meta_description', 'meta_keyword', 'order', 'status'];
 }

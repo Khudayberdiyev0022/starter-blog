@@ -10,16 +10,21 @@
 $(document).ready(function () {
     // Slug ajax from title
     $('#title').change(function (e) {
-        // let path = "{{ route('slug') }}"
+        let path = "{{ route('slug') }}"
         // console.log(e.target.value)
-        $.get("{{ route('slug') }}",
+        $.get("/slug",
             {'title': $(this).val()},
             function (data) {
                 $('#slug').val(data.slug)
             }
-    )
+        )
     })
     // Slug ajax from title end
+
+    // image upload with input
+    $('#lfm').filemanager('image');
+    // image upload with input end
+
 
     // Define function to open filemanager window
     const lfm = function (options, cb) {
@@ -50,7 +55,7 @@ $(document).ready(function () {
 
     // Initialize summernote with LFM button in the popover button group
     // Please note that you can add this button to any other button group you'd like
-    $('#summernote-editor').summernote({
+    $('#content').summernote({
         dialogsInBody: true,
         toolbar: [
             ['style', ['style']],

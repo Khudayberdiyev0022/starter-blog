@@ -97,16 +97,16 @@
     </div>
   </div>
 @endsection
-@push('script')
-  <script>
-      $('#title').change(function (e) {
-          // console.log(e.target.value)
-          $.get('{{ route('slug') }}',
-              {'title': $(this).val()},
-              function (data) {
-                  $('#slug').val(data.slug)
-              }
-          )
-      })
-  </script>
-@endpush
+{{--@push('script')--}}
+{{--  <script>--}}
+{{--      $('#title').change(function (e) {--}}
+{{--          // console.log(e.target.value)--}}
+{{--          $.get('{{ route('slug') }}',--}}
+{{--              {'title': $(this).val()},--}}
+{{--              function (data) {--}}
+{{--                  $('#slug').val(data.slug)--}}
+{{--              }--}}
+{{--          )--}}
+{{--      })--}}
+{{--  </script>--}}
+{{--@endpush--}}
