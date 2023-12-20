@@ -19,7 +19,7 @@
               <tr>
                 <th width="50">#</th>
                 <th>Name</th>
-                <th>Permissions</th>
+                <th width="700">Permissions</th>
                 <th>Created At</th>
                 <th class="dt-right">Actions</th>
               </tr>
@@ -31,7 +31,7 @@
                   <td>{{ \Illuminate\Support\Str::title($role->name) }}</td>
                   <td>
                     @foreach($role->permissions as $permission)
-                     <span class="badge badge-light">{{ $permission->name  }}</span>
+                     <span class="badge badge-light mb-2">{{ $permission->name  }}</span>
                     @endforeach
                   </td>
                   <td>{{ $role->created_at }}</td>
