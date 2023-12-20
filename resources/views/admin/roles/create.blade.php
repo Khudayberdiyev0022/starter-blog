@@ -23,12 +23,14 @@
                   <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
-                @foreach($permissions as $permission)
-                  <label for="{{ $permission->id }}" class="btn btn-light">
-                    <input type="checkbox" name="permissions[]" id="{{ $permission->id }}" value="{{ $permission->id }}" style="vertical-align: middle">
-                    {{ $permission->name }}
-                  </label>
-                @endforeach
+                <div class="form-group" style="max-width: 80%">
+                  @foreach($permissions as $permission)
+                    <label for="{{ $permission->id }}" class="btn btn-light mb-2">
+                      <input type="checkbox" name="permissions[]" id="{{ $permission->id }}" value="{{ $permission->id }}" style="vertical-align: middle">
+                      {{ $permission->name }}
+                    </label>
+                  @endforeach
+                </div>
               </div>
             </div>
             <div class="float-right">
