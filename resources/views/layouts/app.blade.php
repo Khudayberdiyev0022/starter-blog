@@ -6,13 +6,18 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- General CSS Files -->
+
   <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+{{--  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">--}}
+  <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.min.css') }}">
+
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
   <!-- Scripts -->
   {{--  @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
@@ -223,8 +228,8 @@
             <a href="#" class="nav-link"><i class="fas fa-bell"></i><span>Notifications</span></a>
           </li>
           <li class="menu-header">Management</li>
-          <li class="dropdown">
-            <a href="{{ route('admin.notifications') }}" class="nav-link"><i class="fas fa-cogs"></i><span>Settings</span></a>
+          <li class="dropdown {{ activeLink('admin.settings.*') }}">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link"><i class="fas fa-cogs"></i><span>Settings</span></a>
           </li>
           <li class="dropdown">
             <a href="{{ route('admin.backups') }}" class="nav-link"><i class="fas fa-undo"></i><span>Backups</span></a>
@@ -265,6 +270,9 @@
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 <!-- Custom JS File -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>--}}
+<script src="{{ asset('assets/bundles/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
 @stack('script')
 </body>
 

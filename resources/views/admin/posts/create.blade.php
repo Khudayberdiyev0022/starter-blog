@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('css')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+@endpush
 @section('content')
   <div class="row">
     <div class="col-12">
@@ -32,7 +35,7 @@
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea name="description" id="description" cols="30" rows="10" class="form-control @error('description') is-invalid @enderror"></textarea>
+                  <textarea id="summernote-editor" name="description" cols="500" class="form-control @error('description') is-invalid @enderror">{!! old('description') !!}</textarea>
                   @error('description')
                   <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
@@ -93,18 +96,7 @@
       </div>
     </div>
   </div>
+
 @endsection
 
-@push('script')
-  <script>
-      $('#title').change(function (e) {
-          // console.log(e.target.value)
-          $.get('{{ route('slug') }}',
-              {'title': $(this).val()},
-              function (data) {
-                  $('#slug').val(data.slug)
-              }
-          )
-      })
-  </script>
-@endpush
+

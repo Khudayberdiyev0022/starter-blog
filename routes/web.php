@@ -25,13 +25,19 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(
   Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
   Route::resource('tags', \App\Http\Controllers\Admin\TagController::class);
   Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
-  Route::get('settings', \App\Http\Controllers\Admin\SettingController::class)->name('settings.edit');
+  Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+  Route::post('settings', [\App\Http\Controllers\Admin\SettingController::class, 'store'])->name('settings.store');
   Route::get('/comments', fn () => 'comments')->name('comments');
   Route::get('/notifications', fn () => 'notifications')->name('notifications');
   Route::get('/backups', fn () => 'backups')->name('backups');
   Route::get('/roles', fn () => 'roles')->name('roles');
   Route::get('/users', fn () => 'users')->name('users');
+
 //  Route::get('/users', fn () => 'users')->name('users');
+});
+
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
+  \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 Route::get('slug', [\App\Http\Controllers\Admin\IndexController::class, 'slug'])->name('slug');
