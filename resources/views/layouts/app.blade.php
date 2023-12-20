@@ -15,7 +15,6 @@
 
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-{{--  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">--}}
   <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.min.css') }}">
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
@@ -262,7 +261,7 @@
 <!-- JS Libraries -->
 <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
 <!-- Page Specific JS File -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="{{ asset('assets/bundles/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/page/index.js') }}"></script>
 <script src="{{ asset('assets/js/page/datatables.js') }}"></script>
 
@@ -270,7 +269,6 @@
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 <!-- Custom JS File -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>--}}
 <script src="{{ asset('assets/bundles/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
 @stack('script')
